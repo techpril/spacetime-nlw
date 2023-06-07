@@ -1,11 +1,15 @@
 import fastify from 'fastify'
+import { PrismaClient } from '@prisma/client'
 
 const app = fastify() // Inicia uma aplicação
+const prisma = new PrismaClient()
 
 // ROTAS
 
-app.get('/hello', () => {
-  return 'Hello'
+app.get('/users', async () => {
+
+  const users = await prisma.user.findMany()
+  return users
 })
 
 // API RESTFUL
