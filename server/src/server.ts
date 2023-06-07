@@ -7,7 +7,6 @@ const prisma = new PrismaClient()
 // ROTAS
 
 app.get('/users', async () => {
-
   const users = await prisma.user.findMany()
   return users
 })
